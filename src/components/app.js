@@ -25,7 +25,11 @@ export default class App extends Component {
     return this.state.books.map((book) => {
       return (
         <div key={book.id}>
-          <h1>Book Title: {book.name}</h1>
+          <h2>Book Title: {book.name}</h2>
+          <h2>Book author: {book.author}</h2>
+          <h2>Book price: {book.price}</h2>
+          <h2>Book description: {book.description}</h2>
+          <br></br>
         </div>
       );
     });
