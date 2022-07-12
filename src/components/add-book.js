@@ -17,6 +17,7 @@ export default function addBook() {
       })
       .then((response) => console.log(response))
       .catch((error) => console.error(error));
+    event.preventDefualt();
   };
 
   return (

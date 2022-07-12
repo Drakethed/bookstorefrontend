@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Book from "./book";
 
 export default class App extends Component {
   constructor() {
@@ -11,7 +12,7 @@ export default class App extends Component {
 
   componentDidMount() {
     axios
-      .get("http://127.0.0.1:5000/book/get")
+      .get("https://appfrontin.herokuapp.com/book/get")
       .then((response) => {
         console.log(response);
         this.setState({ books: response.data });
@@ -23,15 +24,7 @@ export default class App extends Component {
 
   renderBooks() {
     return this.state.books.map((book) => {
-      return (
-        <div key={book.id}>
-          <h2>Book Title: {book.name}</h2>
-          <h2>Book author: {book.author}</h2>
-          <h2>Book price: {book.price}</h2>
-          <h2>Book description: {book.description}</h2>
-          <br></br>
-        </div>
-      );
+      return <Book key={book.id} bookData={book} />;
     });
   }
 
@@ -39,7 +32,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <h1>My Books</h1>
-        {this.renderBooks()}
+        <div>{this.renderBooks()}</div>
       </div>
     );
   }
